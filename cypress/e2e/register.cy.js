@@ -67,4 +67,39 @@ describe('register', () => {
         //assert that the register is deleted
         cy.get('.rt-tr-group').should('not.contain', email);    
     });
+
+    it('should create 12 new register and delete them', () => {
+        //array to store the emails
+        const createdEmails = [];
+        
+        //generate random data
+        let firstName, lastName, email, age, salary, department;
+
+        for (let i = 0; i < 12; i++) {
+            //select rows
+            cy.get('select[aria-label="rows per page"]').select('20 rows')
+
+            firstName = faker.person.firstName();
+            lastName = faker.person.lastName();
+            email = faker.internet.email();
+            age = faker.number.int({ min: 18, max: 75 });
+            salary = faker.finance.amount({ min: 2500, max: 15000, dec: 0 });
+            department = faker.commerce.department();
+        
+            cy.createRegister(firstName, lastName, email, age, salary, department);
+            cy.validateTableData(firstName, lastName, email, age, salary, department);
+
+            createdEmails.push(email);
+        }
+        
+        //delete the registers
+        createdEmails.forEach(email => {
+            cy.deleteRegister(email);
+        });
+        
+        //assert that the registers are deleted
+        createdEmails.forEach(email => {
+            cy.get('.rt-tr-group').should('not.contain', email);
+        });
+    })
 }) 
