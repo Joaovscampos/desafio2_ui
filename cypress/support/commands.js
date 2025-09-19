@@ -23,6 +23,17 @@ Cypress.Commands.add('progressBarPage', () => {
         .should('include', '/progress-bar');
 });
 
+Cypress.Commands.add('sortablePage', () => {
+    cy.visit('/');
+    cy.contains('h5', 'Interactions').click();
+    cy.url()
+        .should('include', '/interaction');
+    cy.contains('span', 'Sortable')
+        .click();
+    cy.url()
+        .should('include', '/sortable');
+});
+
 Cypress.Commands.add('browserWindowsPage', () => {
     cy.visit('/');
     cy.contains('h5', 'Alerts, Frame & Windows').click();

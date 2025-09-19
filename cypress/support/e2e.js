@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import 'allure-cypress'
+import "@4tw/cypress-drag-drop";
 
 Cypress.on('uncaught:exception', (err, runnable) => {
   // returning false here prevents Cypress from
