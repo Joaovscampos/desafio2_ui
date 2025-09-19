@@ -12,6 +12,17 @@ Cypress.Commands.add('formsPage', () => {
         .should('include', '/automation-practice-form');
 });
 
+Cypress.Commands.add('progressBarPage', () => {
+    cy.visit('/');
+    cy.contains('h5', 'Widgets').click();
+    cy.url()
+        .should('include', '/widgets');
+    cy.contains('span', 'Progress Bar')
+        .click();
+    cy.url()
+        .should('include', '/progress-bar');
+});
+
 Cypress.Commands.add('browserWindowsPage', () => {
     cy.visit('/');
     cy.contains('h5', 'Alerts, Frame & Windows').click();
