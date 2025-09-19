@@ -90,6 +90,11 @@ Cypress.Commands.add('editRegister', (email, newFirstName, newLastName, newUserE
   cy.get('#submit').click();
 });
 
+Cypress.Commands.add('deleteRegister', (email) => {
+  cy.contains('.rt-tr-group', email).within(() => {
+    cy.get('span[title="Delete"]').click({ force: true });
+  });
+})
 
 Cypress.Commands.add('fillStudentForm', ({
   firstName,

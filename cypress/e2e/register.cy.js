@@ -60,8 +60,11 @@ describe('register', () => {
 
         //create the register
         cy.createRegister(firstName, lastName, email, age, salary, department);
-
+        
         //delete the register
         cy.deleteRegister(email);
-    })
+
+        //assert that the register is deleted
+        cy.get('.rt-tr-group').should('not.contain', email);    
+    });
 }) 
