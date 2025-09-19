@@ -156,7 +156,7 @@ Cypress.Commands.add('fillStudentForm', ({
   cy.get('textarea[placeholder="Current Address"]').type(address);
 
   // State
-    cy.get('#state').click().contains(state).click();
+    cy.get('#state').click().contains(state).click({ force: true });
   // City
     cy.get('#city').type('{enter}');
 });
