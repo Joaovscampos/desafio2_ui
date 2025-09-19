@@ -17,6 +17,12 @@
 import './commands'
 import 'allure-cypress'
 import "@4tw/cypress-drag-drop";
+import './formsCommands';
+import './interactionsCommands';
+import './newWindowCommands';
+import './progressBarCommands';
+import './registerCommands';
+
 
 Cypress.on('uncaught:exception', (err, runnable) => {
   // returning false here prevents Cypress from
