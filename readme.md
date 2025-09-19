@@ -1,4 +1,4 @@
-# Cypress UI Testing for Accenture UI
+# Cypress UI Testing for DemoQA
 
 ## Descrição
 
